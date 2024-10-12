@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/login">login</a>
-</body>
-</html>
+<h1>Login</h1>
+<form action="/login" method="post">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="password">
+    <input type="submit" name="ok" >
+</form>
