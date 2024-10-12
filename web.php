@@ -19,3 +19,8 @@ Route::get("/janrlar", [CategoryController::class,"janrlar"]);
 Route::get("/kitoblar", [CategoryController::class,"kitoblar"]);
 Route::post("/updatejanr", [CategoryController::class,"updatejanr"]);
 Route::post("/add", [CategoryController::class,"add"]);
+
+Route::get('/login',[CategoryController::class],'loginpage');
+Route::post('/login',[CategoryController::class],'login');
+Route::post('/register',[CategoryController::class],'registerPage');
+Route::post('/logout',[CategoryController::class],'logout');

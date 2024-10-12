@@ -178,8 +178,18 @@
                                                     <form action="/edit" method="post">
                                                         <div class="mb-3">
                                                             <input type="hidden" name="id" value="<?= $m['id'] ?>">
-                                                            <label for="name" class="form-label">Muallif FIO</label>
+                                                            <label for="name" class="form-label">Kitob nomi</label>
                                                             <input type="text" class="form-control" id="name" name="name" value="<?= $m['nomi'] ?>">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input type="hidden" name="id" value="<?= $m['id'] ?>">
+                                                            <label for="name" class="form-label">Kitob muallifi</label>
+                                                            <input type="text" class="form-control" id="muallifi" name="muallif" value="<?= $m['muallif'] ?>">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <input type="hidden" name="id" value="<?= $m['id'] ?>">
+                                                            <label for="name" class="form-label">Kitob Description</label>
+                                                            <input type="text" class="form-control" id="desc" name="desc" value="<?= $m['description'] ?>">
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">

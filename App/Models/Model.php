@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Models;
+
 use App\Database\Database;
 use PDO;
+
 class Model extends Database
 {
     public static function all()
@@ -12,7 +15,7 @@ class Model extends Database
     }
     public static function show($id)
     {
-        $sql = "SELECT * FROM " . static::$table."  WHERE id='{$id}'";
+        $sql = "SELECT * FROM " . static::$table . "  WHERE id='{$id}'";
         $query = self::connect()->query($sql);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -67,14 +70,30 @@ class Model extends Database
     {
         $sql = "SELECT * FROM " . static::$table . " WHERE name LIKE :word OR price LIKE :word or quantity LIKE :word";
         $stmt = self::connect()->prepare($sql);
-        
+
         $search = "%$word%";
         $stmt->bindParam(':word', $search);
-    
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 
+    public static function attach($data)
+    {
+        $stringValue = "";
+
+        foreach ($data as $key => $value) {
+            if ($key == "password") {
+                $value = md5($value);
+            }
+            $stringValue = $stringValue . "{$key} = '{$value}' AND ";
+        }
+        $cleanedString = rtrim($stringValue, "AND ");
+
+        $db = self::connect();
+
+        $stmt = $db->query("SELECT * FROM " . static::$table . " WHERE ($cleanedString)");
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
 }
-?>
